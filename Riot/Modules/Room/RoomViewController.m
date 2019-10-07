@@ -496,6 +496,9 @@
 {
     [super viewWillAppear:animated];
 
+    self.navigationItem.rightBarButtonItems[1].image = nil;
+    self.navigationItem.rightBarButtonItems[1].enabled = NO;
+    
     // Screen tracking
     [[Analytics sharedInstance] trackScreen:@"ChatRoom"];
     
@@ -1463,8 +1466,8 @@
                 else
                 {
                     // Reset original icon
-                    self.navigationItem.rightBarButtonItems[1].image = [UIImage imageNamed:@"apps-icon"];
-                    self.navigationItem.rightBarButtonItems[1].accessibilityLabel = NSLocalizedStringFromTable(@"room_accessibility_integrations", @"Vector", nil);
+                    //self.navigationItem.rightBarButtonItems[1].image = [UIImage imageNamed:@"apps-icon"];
+                    //self.navigationItem.rightBarButtonItems[1].accessibilityLabel = NSLocalizedStringFromTable(@"room_accessibility_integrations", @"Vector", nil);
                 }
                 
                 self.navigationItem.rightBarButtonItems.firstObject.accessibilityLabel = NSLocalizedStringFromTable(@"room_accessibility_search", @"Vector", nil);

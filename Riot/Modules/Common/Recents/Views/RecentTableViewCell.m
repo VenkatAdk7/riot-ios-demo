@@ -89,6 +89,12 @@ static const CGFloat kDirectRoomBorderWidth = 3.0;
         self.roomTitle.text = roomCellData.roomDisplayname;
         self.lastEventDate.text = roomCellData.lastEventDate;
         
+        if ([self.roomTitle.text containsString:@":matrix.org"])
+        {
+            NSString *subString = [self.roomTitle.text stringByReplacingOccurrencesOfString:@":matrix.org" withString:@""];
+            self.roomTitle.text = subString;
+        }
+        
         // Manage lastEventAttributedTextMessage optional property
         if ([roomCellData respondsToSelector:@selector(lastEventAttributedTextMessage)])
         {

@@ -63,7 +63,7 @@ internal enum Asset {
     internal static let importFilesButton = ImageAsset(name: "import_files_button")
     internal static let keyBackupLogo = ImageAsset(name: "key_backup_logo")
     internal static let revealPasswordButton = ImageAsset(name: "reveal_password_button")
-    internal static let launchScreenRiot = ImageAsset(name: "LaunchScreenRiot")
+    internal static let launchScreenRiot1 = ImageAsset(name: "LaunchScreenRiot-1")
     internal static let cameraCapture = ImageAsset(name: "camera_capture")
     internal static let cameraPlay = ImageAsset(name: "camera_play")
     internal static let cameraStop = ImageAsset(name: "camera_stop")
@@ -108,13 +108,14 @@ internal enum Asset {
     internal static let tabPeopleSelected = ImageAsset(name: "tab_people_selected")
     internal static let tabRooms = ImageAsset(name: "tab_rooms")
     internal static let tabRoomsSelected = ImageAsset(name: "tab_rooms_selected")
+    internal static let batlogo = ImageAsset(name: "batlogo")
+    internal static let launchscreen = ImageAsset(name: "launchscreen")
+    internal static let launchscreen1 = ImageAsset(name: "launchscreen1")
   }
   internal enum SharedImages {
     internal static let animatedLogo0 = ImageAsset(name: "animatedLogo-0")
     internal static let animatedLogo1 = ImageAsset(name: "animatedLogo-1")
     internal static let animatedLogo2 = ImageAsset(name: "animatedLogo-2")
-    internal static let animatedLogo3 = ImageAsset(name: "animatedLogo-3")
-    internal static let animatedLogo4 = ImageAsset(name: "animatedLogo-4")
     internal static let cancel = ImageAsset(name: "cancel")
     internal static let e2eVerified = ImageAsset(name: "e2e_verified")
   }

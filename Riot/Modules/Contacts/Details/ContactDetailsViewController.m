@@ -1011,10 +1011,10 @@
                         // The identity server must be defined
                         if (!self.mainSession.matrixRestClient.identityServer)
                         {
-                            MXError *error = [[MXError alloc] initWithErrorCode:kMXSDKErrCodeStringMissingParameters error:@"No supplied identity server URL"];
-                            NSLog(@"[ContactDetailsViewController] Invite %@ failed", participantId);
-                            // Alert user
-                            [[AppDelegate theDelegate] showErrorAsAlert:[error createNSError]];
+//                            MXError *error = [[MXError alloc] initWithErrorCode:kMXSDKErrCodeStringMissingParameters error:@"No supplied identity server URL"];
+//                            NSLog(@"[ContactDetailsViewController] Invite %@ failed", participantId);
+//                            // Alert user
+//                            [[AppDelegate theDelegate] showErrorAsAlert:[error createNSError]];
                             
                             return;
                         }

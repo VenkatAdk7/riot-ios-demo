@@ -150,13 +150,13 @@
     [[Analytics sharedInstance] trackScreen:_screenName];
 
     // Check whether the access to the local contacts has not been already asked.
-    if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusNotDetermined)
-    {
-        // Allow by default the local contacts sync in order to discover matrix users.
-        // This setting change will trigger the loading of the local contacts, which will automatically
-        // ask user permission to access their local contacts.
-        [MXKAppSettings standardAppSettings].syncLocalContacts = YES;
-    }
+//    if ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts] == CNAuthorizationStatusNotDetermined)
+//    {
+//        // Allow by default the local contacts sync in order to discover matrix users.
+//        // This setting change will trigger the loading of the local contacts, which will automatically
+//        // ask user permission to access their local contacts.
+//        [MXKAppSettings standardAppSettings].syncLocalContacts = YES;
+//    }
 
     // Observe kAppDelegateDidTapStatusBarNotification.
     kAppDelegateDidTapStatusBarNotificationObserver = [[NSNotificationCenter defaultCenter] addObserverForName:kAppDelegateDidTapStatusBarNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notif) {

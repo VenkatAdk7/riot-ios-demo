@@ -93,7 +93,7 @@
     
     self.defaultIdentityServerUrl = [[NSUserDefaults standardUserDefaults] objectForKey:@"identityserverurl"];
     
-    self.welcomeImageView.image = [UIImage imageNamed:@"logo"];
+    self.welcomeImageView.image = [UIImage imageNamed:@"batlogo"];
     
     [self.submitButton.layer setCornerRadius:5];
     self.submitButton.clipsToBounds = YES;
@@ -186,17 +186,21 @@
     
     self.noFlowLabel.textColor = ThemeService.shared.theme.warningColor;
     
-    NSMutableAttributedString *forgotPasswordTitle = [[NSMutableAttributedString alloc] initWithString:NSLocalizedStringFromTable(@"auth_forgot_password", @"Vector", nil)];
-    [forgotPasswordTitle addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, forgotPasswordTitle.length)];
-    [forgotPasswordTitle addAttribute:NSForegroundColorAttributeName value:ThemeService.shared.theme.tintColor range:NSMakeRange(0, forgotPasswordTitle.length)];
-    [self.forgotPasswordButton setAttributedTitle:forgotPasswordTitle forState:UIControlStateNormal];
-    [self.forgotPasswordButton setAttributedTitle:forgotPasswordTitle forState:UIControlStateHighlighted];
-    [self updateForgotPwdButtonVisibility];
+//    NSMutableAttributedString *forgotPasswordTitle = [[NSMutableAttributedString alloc] initWithString:NSLocalizedStringFromTable(@"auth_forgot_password", @"Vector", nil)];
+//    [forgotPasswordTitle addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, forgotPasswordTitle.length)];
+//    [forgotPasswordTitle addAttribute:NSForegroundColorAttributeName value:ThemeService.shared.theme.tintColor range:NSMakeRange(0, forgotPasswordTitle.length)];
+//    [self.forgotPasswordButton setAttributedTitle:forgotPasswordTitle forState:UIControlStateNormal];
+//    [self.forgotPasswordButton setAttributedTitle:forgotPasswordTitle forState:UIControlStateHighlighted];
+//    [self updateForgotPwdButtonVisibility];
+    
+    
+    self.forgotPasswordButton.hidden = YES;
+    self.forgotPasswordButton.enabled = NO;
     
     NSAttributedString *serverOptionsTitle = [[NSAttributedString alloc] initWithString:NSLocalizedStringFromTable(@"auth_use_server_options", @"Vector", nil) attributes:@{NSForegroundColorAttributeName : ThemeService.shared.theme.textSecondaryColor, NSFontAttributeName: [UIFont systemFontOfSize:14]}];
     [self.customServersTickButton setAttributedTitle:serverOptionsTitle forState:UIControlStateNormal];
     [self.customServersTickButton setAttributedTitle:serverOptionsTitle forState:UIControlStateHighlighted];
-    
+    self.customServersTickButton.hidden = YES;
     self.homeServerSeparator.backgroundColor = ThemeService.shared.theme.lineBreakColor;
     self.homeServerTextField.textColor = ThemeService.shared.theme.textPrimaryColor;
     self.homeServerLabel.textColor = ThemeService.shared.theme.textSecondaryColor;
@@ -302,7 +306,7 @@
         }
     }
     
-    [self updateForgotPwdButtonVisibility];
+    //[self updateForgotPwdButtonVisibility];
     [self updateSoftLogoutClearDataContainerVisibility];
 }
 
@@ -352,7 +356,9 @@
     super.userInteractionEnabled = userInteractionEnabled;
 
     // Reset
-    self.rightBarButtonItem.enabled = YES;
+    self.rightBarButtonItem.enabled = NO;
+    self.rightBarButtonItem.title = nil;
+    self.rightBarButtonItem.enabled = NO;
     
     // Show/Hide server options
     if (_optionsContainer.hidden == userInteractionEnabled)
@@ -368,6 +374,9 @@
         // The right bar button is used to cancel the running request.
         self.rightBarButtonItem.title = NSLocalizedStringFromTable(@"cancel", @"Vector", nil);
 
+        self.rightBarButtonItem.title = @"";
+        self.rightBarButtonItem.enabled = NO;
+        
         // Remove the potential back button.
         self.mainNavigationItem.leftBarButtonItem = nil;
     }
@@ -385,6 +394,9 @@
             if (!authInputsview.isSingleSignOnRequired && !self.softLogoutCredentials)
             {
                 self.rightBarButtonItem.title = NSLocalizedStringFromTable(@"auth_register", @"Vector", nil);
+            
+                self.rightBarButtonItem.title = nil;
+                self.rightBarButtonItem.enabled = NO;
             }
             else
             {
@@ -396,7 +408,8 @@
         else if (self.authType == MXKAuthenticationTypeRegister)
         {
             self.rightBarButtonItem.title = NSLocalizedStringFromTable(@"auth_login", @"Vector", nil);
-            
+            self.rightBarButtonItem.title = nil;
+            self.rightBarButtonItem.enabled = NO;
             // Restore the back button
             if (authInputsview)
             {
@@ -407,6 +420,8 @@
         {
             // The right bar button is used to return to login.
             self.rightBarButtonItem.title = NSLocalizedStringFromTable(@"cancel", @"Vector", nil);
+            self.rightBarButtonItem.title = nil;
+            self.rightBarButtonItem.enabled = NO;
         }
     }
 }
@@ -632,7 +647,7 @@
     }
 
     // Hide "Forgot password" and "Log in" buttons in case of SSO
-    [self updateForgotPwdButtonVisibility];
+    //[self updateForgotPwdButtonVisibility];
     [self updateSoftLogoutClearDataContainerVisibility];
 
     self.submitButton.hidden = authInputsview.isSingleSignOnRequired;
@@ -657,7 +672,7 @@
     else if (sender == self.forgotPasswordButton)
     {
         // Update UI to reset password
-        self.authType = MXKAuthenticationTypeForgotPassword;
+        //self.authType = MXKAuthenticationTypeForgotPassword;
     }
     else if (sender == self.rightBarButtonItem)
     {
@@ -671,11 +686,15 @@
         {
             self.authType = MXKAuthenticationTypeRegister;
             self.rightBarButtonItem.title = NSLocalizedStringFromTable(@"auth_login", @"Vector", nil);
+            self.rightBarButtonItem.title = nil;
+            self.rightBarButtonItem.enabled = NO;
         }
         else
         {
             self.authType = MXKAuthenticationTypeLogin;
             self.rightBarButtonItem.title = NSLocalizedStringFromTable(@"auth_register", @"Vector", nil);
+            self.rightBarButtonItem.title = nil;
+            self.rightBarButtonItem.enabled = NO;
         }
     }
     else if (sender == self.mainNavigationItem.leftBarButtonItem)

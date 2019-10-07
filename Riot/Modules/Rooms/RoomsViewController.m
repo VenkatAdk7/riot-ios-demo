@@ -39,7 +39,7 @@
 {
     [super finalizeInit];
     
-    self.screenName = @"Rooms";
+    self.screenName = @"Groups";
 }
 
 - (void)viewDidLoad
